@@ -13,7 +13,6 @@ type DataArr = {
 };
 
 export default function Blogs() {
-  // Assuming getData returns an array of DataArr
   const [dataArr, setDataArr] = useState<DataArr[] | null>(null);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function Blogs() {
         setDataArr(data);
       } catch (error) {
         console.error("Error fetching data:", error);
-        // Handle error as needed
       }
     };
 
@@ -32,8 +30,7 @@ export default function Blogs() {
 
   return (
     <div>
-      <h1>Blogs below</h1>
-      <ul>
+      <main className="flex flex-col justify-start items-center">
         {dataArr?.map(
           ({ title, author, category, img, date, content }: DataArr, index) => (
             <Blog
@@ -47,7 +44,7 @@ export default function Blogs() {
             />
           )
         )}
-      </ul>
+      </main>
     </div>
   );
 }
